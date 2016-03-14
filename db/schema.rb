@@ -11,28 +11,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314055941) do
+ActiveRecord::Schema.define(version: 20160314120014) do
 
-  create_table "orderitems", force: :cascade do |t|
-    t.string   "ordernumber"
+  create_table "order_items", force: :cascade do |t|
+    t.string   "orderno"
     t.string   "itemdescription"
     t.integer  "orderqty"
     t.integer  "receivedqty"
     t.string   "receivedby"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "ordernumber"
-    t.date   "orderdate"
-    t.string "suppliername"
+    t.string   "orderno"
+    t.datetime "orderdate"
+    t.string   "suppliername"
+    t.string   "projectcode"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "projectcode"
+    t.string   "projectname"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "stocks", force: :cascade do |t|
     t.string   "ticker"
     t.string   "name"
     t.decimal  "last_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_projects", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_stocks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "stock_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

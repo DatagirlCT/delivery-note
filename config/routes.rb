@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
+
+  resources :user_projects
+  resources :projects
+  resources :order_items
+  resources :orders
   devise_for :users
+  resources :user_stocks, except: [:show, :edit, :update]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  
+
   root 'pages#home'
   get 'my_portfolio', to: "users#my_portfolio"
+  get 'my_projects', to: "users#my_projects"
+  get 'my_orders', to: "users#my_orders"
   get 'search_stocks', to: "stocks#search"
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
