@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314120014) do
+ActiveRecord::Schema.define(version: 20160317100657) do
 
   create_table "order_items", force: :cascade do |t|
-    t.string   "orderno"
+    t.integer  "order_id"
     t.string   "itemdescription"
     t.integer  "orderqty"
     t.integer  "receivedqty"
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20160314120014) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer  "project_id"
     t.string   "orderno"
     t.datetime "orderdate"
     t.string   "suppliername"
-    t.string   "projectcode"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160314120014) do
     t.string   "projectname"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "project_id"
   end
 
   create_table "stocks", force: :cascade do |t|

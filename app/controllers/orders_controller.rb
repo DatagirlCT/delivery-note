@@ -1,15 +1,16 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  
-  def view
-    @user_projects = current_user.projects
-    @user_orders = current_user.projects.orders
-    @user = current_user
-  end
+
+#   def view
+#     @user_projects = current_user.projects
+#     @user_orders = current_user.projects.orders
+#     @user = current_user
+#   end
 
   # GET /orders
   # GET /orders.json
   def index
+    #@orders = Order.find(params[:project_id])
     @orders = Order.all
   end
 
@@ -25,6 +26,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+     @order = Order.find(params[:id])
   end
 
   # POST /orders
@@ -75,6 +77,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:orderno, :orderdate, :suppliername, :projectcode)
+      params.require(:order).permit(:orderno, :orderdate, :suppliername, :project_id)
     end
 end

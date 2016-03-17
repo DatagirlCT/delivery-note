@@ -1,15 +1,11 @@
-<%= project.projectcode %>
-<%= project.projectname %>
-
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Order No</th>
       <th>Supplier Name</th>
       <th>Order Date</th>
-      <% if @user.id == current_user.id %>
-      <th>Actions</th>
-      <% end %>
+      <th>Project ID</th>
+      <th>User ID</th>
     </tr>
   </thead>
   <tbody>
@@ -18,20 +14,12 @@
       <td><%= order.orderno %></td>
       <td><%= order.suppliername %></td>
       <td><%= order.orderdate %></td>
-      <% if @user.id == current_user.id %>
-      <td>
-        <%= link_to 'View Items', order_item_path(user_order),
-              :method => :view,
-              :class => "btn btn-xs btn-important" %>
-      </td>
-      <% end %>
-    </tr>
+      <td><%= order.project_id %></td>
+      <td>user_id</td>
+     </tr>
     <% end %>
 
   </tbody>
 </table>
-
-
-
 
 <%= link_to 'Back', projects_path %>

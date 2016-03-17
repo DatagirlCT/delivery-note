@@ -1,6 +1,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Project ID</th>
       <th>Project Code</th>
       <th>Project Name</th>
       <% if @user.id == current_user.id %>
@@ -11,6 +12,7 @@
   <tbody>
     <% @user_projects.each do |user_project| %>
     <tr>
+      <td><%= user_project.project_id %></td>
       <td><%= user_project.projectcode %></td>
       <td><%= user_project.projectname %></td>
       <% if @user.id == current_user.id %>

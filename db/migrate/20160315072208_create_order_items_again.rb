@@ -1,7 +1,7 @@
-class CreateOrderItems < ActiveRecord::Migration
+class CreateOrderItemsAgain < ActiveRecord::Migration
   def change
     create_table :order_items do |t|
-      t.string :orderid
+      t.integer :order_id
       t.string :itemdescription
       t.integer :orderqty
       t.integer :receivedqty
